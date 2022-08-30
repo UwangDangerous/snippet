@@ -1,0 +1,72 @@
+{
+	// Place your snippets for php here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"this untuk codeigneter": {
+		"prefix": "this",
+		"body": "\\$this->$1->$2($3)$0"  
+	},
+	"untuk variabel pesan pada session flashdata":{
+		"prefix": "cipesan",
+		"body": [
+			"\\$pesan = [",
+			"\t\"${1:pesan}\" => \"${2:Data Berhasil Disimpan}\",",
+			"\t\"${3:warna}\" => \"${4:Success}\"",
+			"];$0"
+		]
+	},
+	"ci 3 get database":{
+		"prefix": "dbget",
+		"body": "$1\\$this->db->get(\"${2:tabel_db}\")->${3|pilih,result_array(),row_array(),num_rows()|}$0"
+	},
+	"ci 3 where database":{
+		"prefix": "dbwhere",
+		"body": "\\$this->db->where(\"${1:id_tabel}\", $2)$0"
+	},
+	"ci 3 join database":{
+		"prefix": "dbjoin",
+		"body": "\\$this->db->join(\"${1:tabel_db1}\", \"${1:tabel_db1}.${3:id_tabel} = ${2:tabel_db2}.${3:id_tabel}\")$0"
+	},
+	"ci 3 select database":{
+		"prefix": "dbselect",
+		"body": "\\$this->db->select(\"${1:tabel_db}\")$0"
+	},
+	"ci 3 insert": {
+		"prefix": "dbinsert",
+		"body": "\\$this->db->insert(\"${1:tabel_db}\", \\$${2:query})$0"
+	},
+	"ci 3 delete": {
+		"prefix": "dbdelete",
+		"body": [
+			"\\$this->db->where(\"${1:id_tabel}\", $2) ;",
+			"\\$this->db->delete(\"${3:tabel_db}\");$0"
+		]
+	},
+	"ci 3 delete with if": {
+		"prefix": "ifdbdelete",
+		"body": [
+			"\\$this->db->where(\"${1:id_tabel}\", $2) ;",
+			"if(\\$this->db->delete(\"${3:tabel_db}\")){",
+			"\t$0", 
+			"}"
+		]
+	},
+	"ci 3 update": {
+		"prefix": "dbupdate",
+		"body": [
+			"\\$this->db->where(\"${1:id_tabel}\", $2) ;",
+			"\\$this->db->set($${4:query}) ;",
+			"\\$this->db->update(\"${5:tabel_db}\");$0"
+		]
+	}
+}
