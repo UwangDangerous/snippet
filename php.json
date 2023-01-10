@@ -21,7 +21,7 @@
 		"body": [
 			"\\$pesan = [",
 			"\t\"${1:pesan}\" => \"${2:Data Berhasil Disimpan}\",",
-			"\t\"${3:warna}\" => \"${4:Success}\"",
+			"\t\"${3:warna}\" => \"${4:success}\"",
 			"];$0"
 		]
 	},
@@ -68,5 +68,9 @@
 			"\\$this->db->set($${4:query}) ;",
 			"\\$this->db->update(\"${5:tabel_db}\");$0"
 		]
+	},
+	"MY Log" : {
+		"prefix" : "mylog" ,
+		"body" : "\\$this->Utility_model->log(${1:tipe}, \"${2:deskripsi}\") ;"
 	}
 }
