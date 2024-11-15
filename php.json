@@ -29,6 +29,10 @@
 		"prefix": "dbget",
 		"body": "$1\\$this->db->get(\"${2:tabel_db}\")->${3|pilih,result_array(),row_array(),num_rows()|}$0"
 	},
+	"ci 3 GET / POST FORM INPUT":{
+		"prefix": "3input",
+		"body": "\\$this->input->${1|post,get|}(\"$2\", true)$0"
+	},
 	"ci 3 where database":{
 		"prefix": "dbwhere",
 		"body": "\\$this->db->where(\"${1:id_tabel}\", $2)$0"
@@ -72,5 +76,98 @@
 	"MY Log" : {
 		"prefix" : "mylog" ,
 		"body" : "\\$this->Utility_model->log(${1:tipe}, \"${2:deskripsi}\") ;"
+	},
+	"Flashdata" : {
+		"prefix": "fl3" ,
+		"body" : [
+			"\\$this->session->set_flashdata(['pesan' => 'tidak ada akses' , 'warna' => 'danger']) ;" ,
+			"redirect('$1');"
+		]
+	},
+	"KOMENTAR" : {
+		"prefix": "komentar" ,
+		"body" : [
+			"/*================================================================================" ,
+			"$1",
+			"=================================================================================*/" ,
+			"$0"
+		]
+	},
+	"SESSION FLASHDATA" : {
+		"prefix": "c3flash" ,
+		"body" : "\\$this->session->set_flashdata($1)$0"
+	},
+	"SESSION USERDATA" : {
+		"prefix": "c3sesi" ,
+		"body" : "\\$this->session->userdata($1)$0"
+	},
+	
+
+
+	"LOAD DATABASE" : {
+		"prefix": "3ldb" ,
+		"body" : "\\$DB = \\$this->load->database(\"$1\", true); \n$0"
+	},
+	"dbeksternal get database":{
+		"prefix": "xget",
+		"body": "$1\\$DB->get(\"${2:tabel_db}\")->${3|pilih,result_array(),row_array(),num_rows()|}$0"
+	},
+	"dbeksternal where database":{
+		"prefix": "xwhere",
+		"body": "\\$DB->where(\"${1:id_tabel}\", $2)$0"
+	},
+	"dbeksternal join database":{
+		"prefix": "xjoin",
+		"body": "\\$DB->join(\"${1:tabel_db1}\", \"${1:tabel_db1}.${3:id_tabel} = ${2:tabel_db2}.${3:id_tabel}\")$0"
+	},
+	"dbeksternal select database":{
+		"prefix": "xselect",
+		"body": "\\$DB->select(\"${1:tabel_db}\")$0"
+	},
+	"dbeksternal insert": {
+		"prefix": "xinsert",
+		"body": "\\$DB->insert(\"${1:tabel_db}\", \\$${2:query})$0"
+	},
+	"dbeksternal delete": {
+		"prefix": "xdelete",
+		"body": [
+			"\\$DB->where(\"${1:id_tabel}\", $2) ;",
+			"\\$DB->delete(\"${3:tabel_db}\");$0"
+		]
+	},
+	"dbeksternal update": {
+		"prefix": "xupdate",
+		"body": [
+			"\\$DB->where(\"${1:id_tabel}\", $2) ;",
+			"\\$DB->set($${4:query}) ;",
+			"\\$DB->update(\"${5:tabel_db}\");$0"
+		]
+	},
+	"setup session ci 3": {
+		"prefix": "sesi",
+		"body": "\\$this->session->${1|set_flashdata($pesan),set_userdata($sesi),flashdata(),userdata()|}$2 $0"  
+	},
+	"date": {
+		"prefix": "time" ,
+		"body": "date(\"${1|Y-m-d,Y-m-d G:i:s,Y-m-t,Y-m-01,Y,m,d|}\")" 
+	} ,
+	"affected c3": {
+		"prefix": "dbaffected" ,
+		"body": "\\$this->db->affected_rows()" 
+	}, 
+	"local direct": {
+		"prefix": "ldr" ,
+		"description": "local redirect javascrip" ,
+		"body": "echo \"<script>redirect($1, $2)</script>\";"
+	},
+	"myconnection": {
+		"prefix": "conn",
+		"description": "Panggil koneksi manual" ,
+		"body": "\\$this->conn['${1|lokal,cloud,sap|}']"
+	},
+	"cek_koneksi": {
+		"prefix": "connect",
+		"description": "SET KONEKSI" ,
+		"body": "\\$this->conn = \\$this->my->connection()"
 	}
 }
