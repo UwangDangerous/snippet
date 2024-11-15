@@ -154,5 +154,13 @@
 				"\t</table>",
 			"</div>"
 		]
+	},
+	"wajib di isi":{
+		"prefix": "3*" ,
+		"body": "<i class=\"text-danger\">*</i>" 
+	},
+	"form upload file": {
+		"prefix": "enctype",
+		"body": "enctype='multipart/form-data'"
 	}
 }
